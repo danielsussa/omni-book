@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear-Speech App</title>
+    <style>
+        #text-display {
+            font-size: 18px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            padding: 20px;
+            border: 1px solid #ccc;
+            min-height: 100px;
+            margin: 10px 0;
+        }
+        .correct {
+            text-decoration: underline green;
+        }
+        .incorrect {
+            text-decoration: underline yellow;
+        }
+    </style>
+</head>
+<body>
+<div id="text-display" contenteditable="false">Press Ctrl+V to paste your text here.</div>
+<button id="start-speech">Start Speaking</button>
+<button id="stop-speech">Stop Speaking</button>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
