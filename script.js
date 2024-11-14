@@ -12,7 +12,7 @@ speechRecognition.init();
 let originalWords = [];
 let currentIndex = 0;
 
-renderText('Hello world')
+renderText('hello world from Brazil')
 
 // Function to render pasted text as words for highlighting
 function renderText(text) {
@@ -37,20 +37,25 @@ function updateHighlight(isCorrect) {
 
     if (currentIndex < originalWords.length) {
         wordElements[currentIndex].classList.add(isCorrect ? 'correct' : 'incorrect');
-        currentIndex++;
+        if (isCorrect) {
+            currentIndex++; // Move to the next word only if correct
+        }
     }
 }
 
 // Start recognition
 startButton.addEventListener('click', () => {
     speechRecognition.start();
-    speechRecognition.onResult = (transcript) => {
+
+    speechRecognition.onResult = (transcript, interimTranscript) => {
+        console.log(transcript, interimTranscript)
         const spokenWords = transcript.trim().split(/\s+/);
 
-        if (spokenWords[currentIndex] === originalWords[currentIndex]) {
-            updateHighlight(true);
+        // Check each new spoken word against the next expected word in the original text
+        if (spokenWords[currentIndex] && spokenWords[currentIndex].toLowerCase() === originalWords[currentIndex].toLowerCase()) {
+            updateHighlight(true); // Correct word spoken, highlight it and move to the next
         } else {
-            updateHighlight(false);
+            updateHighlight(false); // Incorrect word spoken, mark as incorrect without advancing
         }
     };
 });

@@ -1,4 +1,5 @@
 export default class SpeechRecognitionModule {
+    onResult;
     constructor(lang = 'en-US') {
         if (!('webkitSpeechRecognition' in window)) {
             throw new Error('Web Speech API is not supported in this browser.');
@@ -19,6 +20,7 @@ export default class SpeechRecognitionModule {
         this.recognition.onresult = (event) => {
             this.transcript = '';
             this.interimTranscript = '';
+            console.log(event)
 
             for (let i = event.resultIndex; i < event.results.length; i++) {
                 if (event.results[i].isFinal) {
@@ -29,9 +31,7 @@ export default class SpeechRecognitionModule {
             }
 
             // Trigger custom event or callback function
-            if (typeof this.onResult === 'function') {
-                this.onResult(this.transcript, this.interimTranscript);
-            }
+            this.onResult(this.transcript, this.interimTranscript);
         };
 
         this.recognition.onerror = (event) => {
