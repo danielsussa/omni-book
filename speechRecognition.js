@@ -13,6 +13,7 @@ export default class SpeechRecognitionModule {
         this.interimTranscript = '';
         this.isActive = false;
         this.error = null;
+        this.init()
     }
 
     // Initialize event listeners

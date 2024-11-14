@@ -1,8 +1,9 @@
-class SpeechState {
+export default class SpeechState {
     constructor(originalText) {
         this.state = {
             originalText: originalText,
             textParsed: this.parseText(originalText),
+            storedWebkitResult: [],
             speechApi: {
                 events: []
             },
@@ -11,6 +12,19 @@ class SpeechState {
                 render: []
             }
         };
+    }
+
+
+    parseTextToHtml(textDisplay){
+        const originalWords = this.state.originalText.trim().split(/\s+/);
+        textDisplay.innerHTML = originalWords.map(word => `<span>${word}</span>`).join(' ');
+    }
+
+    addWebkitResult(result) {
+    }
+
+    compareWebkitResults(oldResult,newResult){
+        return []
     }
 
     // Add a new speech event
@@ -66,4 +80,4 @@ class SpeechState {
     }
 }
 
-module.exports = SpeechState;
+// module.exports = SpeechState;

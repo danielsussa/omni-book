@@ -1,4 +1,5 @@
 import SpeechRecognitionModule from './speechRecognition.js';
+import SpeechState from "./speechState.js";
 
 const textDisplay = document.getElementById('text-display');
 const startButton = document.getElementById('start-speech');
@@ -6,13 +7,15 @@ const stopButton = document.getElementById('stop-speech');
 
 // Initialize speech recognition
 const speechRecognition = new SpeechRecognitionModule();
-speechRecognition.init();
+const speechState = new SpeechState('hello world from Brazil');
+
+// textDisplay.innerHTML = speechState.addOriginalText('Hello world from Brazil')
 
 // Store words and track progress
 let originalWords = [];
 let currentIndex = 0;
 
-renderText('hello world from Brazil')
+ speechState.parseTextToHtml(textDisplay)
 
 // Function to render pasted text as words for highlighting
 function renderText(text) {
@@ -48,15 +51,7 @@ startButton.addEventListener('click', () => {
     speechRecognition.start();
 
     speechRecognition.onResult = (transcript, interimTranscript) => {
-        console.log(transcript, interimTranscript)
-        const spokenWords = transcript.trim().split(/\s+/);
-
-        // Check each new spoken word against the next expected word in the original text
-        if (spokenWords[currentIndex] && spokenWords[currentIndex].toLowerCase() === originalWords[currentIndex].toLowerCase()) {
-            updateHighlight(true); // Correct word spoken, highlight it and move to the next
-        } else {
-            updateHighlight(false); // Incorrect word spoken, mark as incorrect without advancing
-        }
+        console.log(interimTranscript)
     };
 });
 

@@ -2,12 +2,10 @@
   "originalText": "This is the final text, This is a text ongoing, and it will finish somehow!",
   "textParsed": "this is the final text this is a text ongoing and it will finish somehow",
 
-  "speechApi": {
-    "events": [
-      {"text": "This is the final text", "confidence": "0.987"},
-      {"text": "This is a text ongoing and", "confidence": "0.70"}
-    ]
-  },
+  "storedWebkitResult": [
+    {"text": "This is the final text", "confidence": "0.987"},
+    {"text": "This is a text ongoing and", "confidence": "0.70"}
+  ],
   "result": {
     "status": "ONGOING/LOOSE_TRACK/FINISHED",
     "changes": [

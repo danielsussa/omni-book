@@ -20,7 +20,7 @@ describe('SpeechState', () => {
     });
 
     test('adds a speech event correctly', () => {
-        speechState.addSpeechEvent("This is a text that I paste.", 0.987, true);
+        speechState.addWebkitResult("This is a text that I paste.", 0.987, true);
 
         const state = speechState.getState();
         expect(state.speechApi.events).toHaveLength(1);
@@ -53,3 +53,25 @@ describe('SpeechState', () => {
         expect(state.result.status).toBe("FINISHED");
     });
 });
+
+describe('SpeechState', () => {
+
+    speechState = new SpeechState('hello world');
+
+    test('equal result', () => {
+       const oldResult = [
+           {transcript:"This is a text that I paste"},
+           {transcript:"This is a text"}
+       ]
+        const newResult = [
+            {transcript:"This is a text that I paste"},
+            {transcript:"This is a text ongoing"}
+        ]
+
+        const diff = speechState.compareWebkitResults(oldResult, newResult)
+        const expectedDiff = [
+            {kind:'NEW_ENTRY', text:'ongoing', index: 11}
+        ]
+        expect(diff).toStrictEqual(expectedDiff);
+    })
+})
