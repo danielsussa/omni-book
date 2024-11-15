@@ -45,3 +45,12 @@ declare var webkitSpeechRecognition: {
     prototype: SpeechRecognition;
     new (): SpeechRecognition;
 };
+
+import jQuery from 'jquery';
+
+declare global {
+    interface Window {
+        jQuery: typeof jQuery;
+        $: typeof jQuery;
+    }
+}

@@ -2,6 +2,10 @@ import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
+    define: {
+        $: 'window.jQuery',
+        jQuery: 'window.jQuery',
+    },
     plugins: [
         viteStaticCopy({
             targets: [
