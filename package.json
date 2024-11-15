@@ -3,18 +3,26 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "browser-sync start --server --files '*.html, *.js, *.css'",
-    "test": "jest"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/jquery": "^3.5.32",
     "browser-sync": "^3.0.3",
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "jquery": "^3.7.1",
+    "sass": "^1.81.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-plugin-static-copy": "^2.1.0"
   },
   "dependencies": {
-    "string-similarity-js": "^2.1.4"
+    "string-similarity-js": "^2.1.4",
+    "zustand": "^5.0.1"
   }
 }
