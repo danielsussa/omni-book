@@ -7,6 +7,9 @@ import { defaultKeymap } from "@codemirror/commands";
 import { EditorView, minimalSetup } from 'codemirror';
 import { markdown } from '@codemirror/lang-markdown';
 import {keymap} from "@codemirror/view";
+import {loadFromStorage, saveKeymap} from "./extensions/save";
+import {hashtagAutocomplete, searchTagKeyMap} from "./extensions/autocompleteTags";
+import {interceptNewHashtags} from "./extensions/interceptTags";
 
 $(() => {
 
@@ -21,12 +24,16 @@ $(() => {
     });
 
   const editor = new EditorView({
-    doc: '# Welcome to CodeMirror 6\nEdit Markdown here!',
+    doc: loadFromStorage(),
     extensions: [
         // minimalSetup,
         keymap.of([...defaultKeymap, ...historyKeymap]), // Add key bindings for Enter and more
         markdown(),
         fullSizeEditor,
+        saveKeymap,
+        hashtagAutocomplete,
+        EditorView.lineWrapping,
+        interceptNewHashtags,
         // foldGutter(), // Disable default folding
         // customFolding, // Add custom folding logic
         // markdownPreview
