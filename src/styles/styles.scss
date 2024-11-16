@@ -1,11 +1,23 @@
 @import './color';
 
-p,span {
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+p {
     color: var(--text-color);
+    font-size: 1.1em;
 }
 
-span{
-    font-family: Arial, serif;
+.container{
+    padding: 0.5em;
+}
+
+h2,p,span {
+    font-family: "Mulish", sans-serif;
+}
+
+h2,p{
+    margin-block-start: 0.3em;
+    margin-block-end: 0.3em;
 }
 
 body {
