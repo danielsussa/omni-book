@@ -2,23 +2,17 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
-p {
-    color: var(--text-color);
-    font-size: 1.1em;
-}
 
-.container{
-    padding: 0.5em;
-}
-
-h2,p,span {
+.cm-editor {
     font-family: "Mulish", sans-serif;
+    //font-family: 'Fira Code', monospace; /* Use a custom font */
+    font-size: 16px; /* Adjust font size */
+    color: #333; /* Text color */
+    background-color: var(--bg-color); /* Editor background color */
+    border: 1px solid #ccc; /* Optional border */
 }
 
-h2,p{
-    margin-block-start: 0.3em;
-    margin-block-end: 0.3em;
-}
+
 
 body {
     background-color: var(--bg-color);

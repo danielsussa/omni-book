@@ -2,19 +2,35 @@ import {getCursorColumn, getCursorPosition, greet, restoreCursorPosition, textTo
 import './styles/styles.scss';
 import './styles/color.scss';
 import $ from 'jquery';
-import {Render} from "./render";
-
-const textMaps = textToTextMap('## Hello world\nprevious point mean that Chrome could both speak and listen on Desktop, but I haven’t tried the non OSS version (yet) … update: I did and it worked well!')
-const render = new Render(textMaps)
-
+import { history, historyKeymap } from "@codemirror/history";
+import { defaultKeymap } from "@codemirror/commands";
+import { EditorView, minimalSetup } from 'codemirror';
+import { markdown } from '@codemirror/lang-markdown';
+import {keymap} from "@codemirror/view";
 
 $(() => {
 
-  render.start()
+    const fullSizeEditor = EditorView.theme({
+        "&": {
+            width: "100%", // Full width of the container
+            height: "100vh", // Optional: Full height of the viewport
+        },
+        ".cm-scroller": {
+            overflow: "hidden", // Prevent unwanted scrollbars
+        },
+    });
 
-  $('.editable').on('keyup click', function () {
-    const cursor = getCursorColumn()
-    const element = render.updateCursor(cursor)
-     restoreCursorPosition(element, {startOffset: cursor})
+  const editor = new EditorView({
+    doc: '# Welcome to CodeMirror 6\nEdit Markdown here!',
+    extensions: [
+        // minimalSetup,
+        keymap.of([...defaultKeymap, ...historyKeymap]), // Add key bindings for Enter and more
+        markdown(),
+        fullSizeEditor,
+        // foldGutter(), // Disable default folding
+        // customFolding, // Add custom folding logic
+        // markdownPreview
+    ],
+    parent: document.getElementById('editor')!,
   });
 })
