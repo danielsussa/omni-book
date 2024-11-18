@@ -58,10 +58,13 @@ export class ImageWithSubtitleTool {
 
         wrapper.appendChild(this.input);
 
-        // Automatically open the file selection dialog
-        setTimeout(() => {
-            this.input.click();
-        }, 0);
+        if(!this.data.src) {
+            // Automatically open the file selection dialog
+            setTimeout(() => {
+                this.input.click();
+            }, 0);
+        }
+
 
         return wrapper;
     }

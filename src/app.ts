@@ -9,6 +9,7 @@ import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import ImageTool from '@editorjs/image';
 import {AutoImageTool, Base64ImageTool, ImageWithSubtitleTool} from "./extensions/base64Image";
+import {HashtagAutocomplete} from "./extensions/tagsAutoComplete";
 
 
 const editor = new EditorJS({
@@ -17,6 +18,9 @@ const editor = new EditorJS({
     tools: {
         image: {
             class: ImageWithSubtitleTool,
+        },
+        hashtag: {
+            class: HashtagAutocomplete,
         },
         paragraph: {
             class: Paragraph,
@@ -48,7 +52,7 @@ const editor = new EditorJS({
         }
     },
     onChange: (api, event) => {
-        console.log('Now I know that Editor\'s content changed!', event)
+        // console.log('Now I know that Editor\'s content changed!', event)
     }
 });
 
