@@ -75,7 +75,8 @@ export class ImageWithSubtitleTool {
 
         return {
             src: img?.src || '',
-            subtitle: subtitle?.value || '',
+            caption: subtitle?.value || '',
         };
     }
+
 }

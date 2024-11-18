@@ -7,9 +7,15 @@ import EditorJS from '@editorjs/editorjs';
 import Paragraph from '@editorjs/paragraph';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
-import ImageTool from '@editorjs/image';
-import {AutoImageTool, Base64ImageTool, ImageWithSubtitleTool} from "./extensions/base64Image";
+import {ImageWithSubtitleTool} from "./extensions/base64Image";
+import Marker from '@editorjs/marker';
 import {HashtagAutocomplete} from "./extensions/tagsAutoComplete";
+import InlineCode from '@editorjs/inline-code';
+import Strikethrough from '@sotaproject/strikethrough';
+import TextVariantTune from '@editorjs/text-variant-tune';
+import NoticeTune from 'editorjs-notice';
+import Undo from 'editorjs-undo';
+
 
 
 const editor = new EditorJS({
@@ -19,8 +25,19 @@ const editor = new EditorJS({
         image: {
             class: ImageWithSubtitleTool,
         },
+        strikethrough: Strikethrough,
         hashtag: {
             class: HashtagAutocomplete,
+        },
+        noticeTune: NoticeTune,
+        textVariant: TextVariantTune,
+        Marker: {
+            class: Marker,
+            shortcut: 'CMD+SHIFT+M',
+        },
+        inlineCode: {
+            class: InlineCode,
+            shortcut: 'CMD+SHIFT+C',
         },
         paragraph: {
             class: Paragraph,
@@ -50,6 +67,10 @@ const editor = new EditorJS({
             class: List,
             inlineToolbar: true
         }
+    },
+    tunes: ['textVariant'],
+    onReady: () => {
+        new Undo({ editor });
     },
     onChange: (api, event) => {
         // console.log('Now I know that Editor\'s content changed!', event)

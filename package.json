@@ -15,6 +15,7 @@
     "@types/codemirror": "^5.60.15",
     "@types/jquery": "^3.5.32",
     "browser-sync": "^3.0.3",
+    "editorjs-undo": "^2.0.28",
     "jest": "^29.7.0",
     "jquery": "^3.7.1",
     "sass": "^1.81.0",
@@ -31,9 +32,14 @@
     "@editorjs/editorjs": "^2.30.7",
     "@editorjs/header": "^2.8.8",
     "@editorjs/image": "^2.10.0",
+    "@editorjs/inline-code": "^1.5.1",
     "@editorjs/list": "^2.0.0",
+    "@editorjs/marker": "^1.4.0",
     "@editorjs/paragraph": "^2.11.6",
+    "@editorjs/text-variant-tune": "^1.0.3",
+    "@sotaproject/strikethrough": "^1.0.1",
     "codemirror": "^6.0.1",
+    "editorjs-notice": "^1.1.2",
     "string-similarity-js": "^2.1.4",
     "zustand": "^5.0.1"
   }
