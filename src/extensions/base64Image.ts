@@ -23,7 +23,7 @@ export class ImageWithSubtitleTool {
         wrapper.classList.add('image-with-subtitle');
 
         const img = document.createElement('img');
-        img.style.maxWidth = '100%';
+        img.style.maxWidth = '95%';
         img.style.marginTop = '10px';
         if (this.data.src) {
             img.src = this.data.src;
@@ -36,7 +36,7 @@ export class ImageWithSubtitleTool {
         subtitleInput.value = this.data.subtitle;
         subtitleInput.style.display = 'block';
         subtitleInput.style.marginTop = '10px';
-        subtitleInput.style.width = '100%';
+        subtitleInput.style.width = '95%';
         wrapper.appendChild(subtitleInput);
 
         // Trigger file selection dialog automatically
@@ -75,7 +75,7 @@ export class ImageWithSubtitleTool {
 
         return {
             src: img?.src || '',
-            caption: subtitle?.value || '',
+            subtitle: subtitle?.value || '',
         };
     }
 

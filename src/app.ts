@@ -15,6 +15,7 @@ import Strikethrough from '@sotaproject/strikethrough';
 import TextVariantTune from '@editorjs/text-variant-tune';
 import NoticeTune from 'editorjs-notice';
 import Undo from 'editorjs-undo';
+import Embed from '@editorjs/embed';
 
 
 
@@ -66,7 +67,15 @@ const editor = new EditorJS({
         list: {
             class: List,
             inlineToolbar: true
-        }
+        },
+        embed: {
+            class: Embed,
+            config: {
+                services: {
+                    youtube: true, // Enable YouTube embedding
+                },
+            },
+        },
     },
     tunes: ['textVariant'],
     onReady: () => {

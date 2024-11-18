@@ -17,9 +17,10 @@
     border-radius: 4px;
 }
 
-.image-with-subtitle input[type="text"] {
+.image-with-subtitle input[type="text"],.cdx-input {
     font-size: 0.7em;
     margin-top: 2px !important;
+    padding-top: 0;
     color: var(--caption-color) !important;
     text-align: center;
     border: none;
