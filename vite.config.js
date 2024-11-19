@@ -2,6 +2,9 @@ import { defineConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
+    build: {
+        outDir: 'dist', // Specify the output directory
+    },
     define: {
         $: 'window.jQuery',
         jQuery: 'window.jQuery',

@@ -1,4 +1,7 @@
 export class ImageWithSubtitleTool {
+    input: any
+    data: any
+    api: any
     constructor({ data, api }) {
         this.api = api;
         this.data = {
@@ -45,15 +48,14 @@ export class ImageWithSubtitleTool {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = (e) => {
-                    img.src = e.target.result;
-                    this.data.src = e.target.result;
+                    if (e.target?.result) {
+                        img.src = e.target.result as string;
+                        this.data.src = e.target?.result;
+                    }
+
                 };
                 reader.readAsDataURL(file);
             }
-        });
-
-        subtitleInput.addEventListener('input', (event) => {
-            this.data.subtitle = event.target.value; // Update subtitle data
         });
 
         wrapper.appendChild(this.input);

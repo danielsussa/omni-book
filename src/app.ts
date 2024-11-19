@@ -1,15 +1,12 @@
-import {getCursorColumn, getCursorPosition, greet, restoreCursorPosition, textToTextMap} from "./helper";
 import './styles/styles.scss';
-import './styles/color.scss';
 
 
-import EditorJS from '@editorjs/editorjs';
+import EditorJS, {BlockToolConstructable, ToolConstructable} from '@editorjs/editorjs';
 import Paragraph from '@editorjs/paragraph';
 import Header from '@editorjs/header';
 import List from '@editorjs/list';
 import {ImageWithSubtitleTool} from "./extensions/base64Image";
 import Marker from '@editorjs/marker';
-import {HashtagAutocomplete} from "./extensions/tagsAutoComplete";
 import InlineCode from '@editorjs/inline-code';
 import Strikethrough from '@sotaproject/strikethrough';
 import TextVariantTune from '@editorjs/text-variant-tune';
@@ -24,12 +21,9 @@ const editor = new EditorJS({
     data: loadContent(),
     tools: {
         image: {
-            class: ImageWithSubtitleTool,
+            class: ImageWithSubtitleTool as BlockToolConstructable,
         },
         strikethrough: Strikethrough,
-        hashtag: {
-            class: HashtagAutocomplete,
-        },
         noticeTune: NoticeTune,
         textVariant: TextVariantTune,
         Marker: {
@@ -41,7 +35,7 @@ const editor = new EditorJS({
             shortcut: 'CMD+SHIFT+C',
         },
         paragraph: {
-            class: Paragraph,
+            class: Paragraph as ToolConstructable,
             inlineToolbar: true,
             config: {
                 placeholder: 'Type your text here...',
@@ -55,7 +49,7 @@ const editor = new EditorJS({
             },
         },
         header: {
-            class: Header,
+            class:  Header as unknown as ToolConstructable,
             shortcut: 'CMD+SHIFT+H',
             inlineToolbar: ['link'],
             config: {
@@ -64,12 +58,12 @@ const editor = new EditorJS({
                 defaultLevel: 3
             }
         },
-        list: {
-            class: List,
-            inlineToolbar: true
-        },
+        // list: {
+        //     class: List,
+        //     inlineToolbar: true
+        // },
         embed: {
-            class: Embed,
+            class: Embed as BlockToolConstructable,
             config: {
                 services: {
                     youtube: true, // Enable YouTube embedding
